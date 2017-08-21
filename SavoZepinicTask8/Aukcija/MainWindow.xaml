@@ -1,0 +1,51 @@
+﻿<Window x:Class="Aukcija.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="auto" Width="500" WindowStartupLocation="CenterScreen">
+    <Grid Width="auto" Height="auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="3" Height="auto" Width="auto">
+            <DataGrid Name="DataGridResults" IsReadOnly="True" HeadersVisibility="Column"
+                      AutoGenerateColumns="False" HorizontalGridLinesBrush="Black" BorderBrush="Black" Foreground="Black" FontWeight="Bold" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding productID}" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                    <DataGridTextColumn Header="Price" Binding="{Binding price}"/>
+                    <DataGridTextColumn Header="Time" Binding="{Binding time,StringFormat=dd/MM/yyyy}"/>
+                    <DataGridTextColumn Header="Bid" Binding="{Binding bid}"/>
+                    <DataGridTextColumn Header="Customer" Binding="{Binding customer}"/>
+                    <DataGridTemplateColumn x:Name="btnBidColl">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Width="50" x:Name="btnBid" Click="btnBID_Click" Background="GreenYellow" >BID</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn x:Name="btnDelete">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Width="50" x:Name="btnDelete" Click="btnDelete_Click" Background="#FFD41919" >DELETE</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <TextBox x:Name="ime" RenderTransformOrigin="11.667,2.643" Grid.Column="1" Margin="113,1,112,0" Grid.Row="1" FontWeight="Bold"/>
+        <Button Grid.Row="1" Name="btnAddProduct" Content="Add Product"
+                 FontWeight="Bold" HorizontalAlignment="Left" Width="100" Click="btnAddProduct_Click"  Grid.Column="1" Height="20" Background="#FF0ECF0E" />
+        <Button  Grid.Row="1" x:Name="btnLogin" Content="Login" Background="#FF2B2BEC"
+        	FontWeight="Bold"  HorizontalAlignment="Right" Width="100" Click="btnLogin_Click" Grid.Column="1" RenderTransformOrigin="0.125,0.463" />
+    </Grid>
+</Window>
